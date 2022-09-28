@@ -20,4 +20,4 @@ func _unhandled_input(event):
 
 
 func _on_continue_button_up():
-	self.paused = !paused
+	self.paused = false

@@ -15,6 +15,7 @@ theme = ExtResource( 1 )
 script = ExtResource( 6 )
 
 [node name="PauseOverlay" type="ColorRect" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.121569, 0.12549, 0.152941, 0.533333 )
