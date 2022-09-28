@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://src/Themes/default.theme" type="Theme" id=1]
+[ext_resource path="res://src/UI/QuitButton.res" type="PackedScene" id=2]
+[ext_resource path="res://src/UI/ChangeSceneButton.res" type="PackedScene" id=3]
+[ext_resource path="res://src/UI/RestartButton.res" type="PackedScene" id=4]
+[ext_resource path="res://src/Fonts/font_swanky_title.tres" type="DynamicFont" id=5]
+[ext_resource path="res://src/UI/IngameUI.gd" type="Script" id=6]
+
+[node name="IngameUI" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 6 )
+
+[node name="PauseOverlay" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.121569, 0.12549, 0.152941, 0.533333 )
+
+[node name="Control" type="Control" parent="PauseOverlay"]
+anchor_right = 1.0
+margin_right = 1.0
+margin_bottom = 242.0
+
+[node name="Label" type="Label" parent="PauseOverlay/Control"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -117.5
+margin_top = 176.0
+margin_right = 117.5
+margin_bottom = 224.0
+custom_colors/font_color = Color( 0.756863, 0.588235, 0.184314, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 5 )
+text = "Pause"
+align = 1
+valign = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseOverlay"]
+margin_left = 45.0
+margin_top = 367.0
+margin_right = 279.0
+margin_bottom = 532.0
+
+[node name="ContinueButton" type="Button" parent="PauseOverlay/VBoxContainer"]
+margin_right = 234.0
+margin_bottom = 31.0
+text = "Continue"
+
+[node name="Restart" parent="PauseOverlay/VBoxContainer" instance=ExtResource( 4 )]
+margin_top = 35.0
+margin_bottom = 66.0
+
+[node name="MainMenuButton" parent="PauseOverlay/VBoxContainer" instance=ExtResource( 3 )]
+margin_top = 70.0
+margin_bottom = 101.0
+text = "MainMenu"
+scene_path = "res://src/Scenes/MainMenu.tscn"
+
+[node name="QuitButton" parent="PauseOverlay/VBoxContainer" instance=ExtResource( 2 )]
+margin_top = 105.0
+margin_bottom = 136.0
+
+[connection signal="button_up" from="PauseOverlay/VBoxContainer/ContinueButton" to="." method="_on_continue_button_up"]
